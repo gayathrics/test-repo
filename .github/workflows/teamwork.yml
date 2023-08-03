@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Teamwork sync action step
         id: twsync
-        uses: gayathrics/github-teamwork-pr-sync@v1.3
+        uses: gayathrics/github-teamwork-pr-sync@v1.4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TEAMWORK_URI: ${{ secrets.TEAMWORK_URI }}
@@ -23,5 +23,5 @@ jobs:
           TEAMWORK_CLOSED_COLUMN: 'In Progress'
           TEAMWORK_MERGED_COLUMN: 'Ready to Test (In Staging)'
       # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The result was ${{ steps.twsync.outputs.message }}"
+      - name: Get the output taskid
+        run: echo "The taskid is ${{ steps.twsync.outputs.taskid }}"
