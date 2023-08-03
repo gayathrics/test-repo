@@ -15,7 +15,7 @@ jobs:
         id: twsync
         uses: gayathrics/github-teamwork-pr-sync@v1.1
         with:
-          GITHUB_TOKEN:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TEAMWORK_URL:  ${{ secrets.TEAMWORK_URI }}
           TEAMWORK_API_TOKEN: ${{ secrets.TEAMWORK_API_TOKEN }}
           TEAMWORK_PROJECT_ID: ${{ secrets.TEAMWORK_PROJECT_ID}}
