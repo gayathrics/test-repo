@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Teamwork sync action step
         id: twsync
-        uses: gayathrics/github-teamwork-pr-sync@v1.1
+        uses: gayathrics/github-teamwork-pr-sync
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TEAMWORK_URL:  ${{ secrets.TEAMWORK_URI }}
