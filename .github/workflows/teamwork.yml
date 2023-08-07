@@ -1,0 +1,27 @@
+name: teamwork
+
+on:
+  pull_request:
+    types: [opened, closed]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  teamwork-sync:
+    runs-on: ubuntu-latest
+    name: Teamwork Sync
+    steps:
+      - name: Teamwork sync action step
+        id: twsync
+        uses: gayathrics/github-teamwork-pr-sync@v1.4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEAMWORK_URI: ${{ secrets.TEAMWORK_URI }}
+          TEAMWORK_API_KEY: ${{ secrets.TEAMWORK_API_KEY }}
+          TEAMWORK_PROJECT_ID: ${{ secrets.TEAMWORK_PROJECT_ID}}
+          TEAMWORK_OPENED_COLUMN: 'Ready for Peer Review'
+          TEAMWORK_CLOSED_COLUMN: 'In Progress'
+          TEAMWORK_MERGED_COLUMN: 'Ready to Test (In Staging)'
+      # Use the output from the `hello` step
+      - name: Get the output taskid
+        run: echo "The taskid is ${{ steps.twsync.outputs.taskid }}"
