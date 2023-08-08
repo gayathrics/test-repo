@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Sync review to teamwork
         id: twreviewsync
-        uses: gayathrics/github-teamwork-pull-request-review@1.1
+        uses: gayathrics/github-teamwork-pull-request-review@v1.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TEAMWORK_URI: ${{ secrets.TEAMWORK_URI }}
