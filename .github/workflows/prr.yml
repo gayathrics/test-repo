@@ -1,0 +1,15 @@
+on:
+  pull_request_review:
+jobs:
+  teamwork-review-sync:
+    runs-on: ubuntu-latest
+    name: Teamwork Review Sync
+    steps:
+      - name: Sync review to teamwork
+        id: twreviewsync
+        uses: gayathrics/github-teamwork-pull-request-review@1.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEAMWORK_URI: ${{ secrets.TEAMWORK_URI }}
+          TEAMWORK_API_KEY: ${{ secrets.TEAMWORK_API_KEY }}
+          TEAMWORK_PROJECT_ID: '485369'
