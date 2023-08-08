@@ -2,9 +2,10 @@ name: teamwork
 
 on:
   pull_request:
+    branches:
+      - 'main'
     types: [opened, closed]
-  pull_request_review:
-    types: [submitted]
+  
 
 jobs:
   teamwork-sync:
@@ -18,10 +19,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TEAMWORK_URI: ${{ secrets.TEAMWORK_URI }}
           TEAMWORK_API_KEY: ${{ secrets.TEAMWORK_API_KEY }}
-          TEAMWORK_PROJECT_ID: ${{ secrets.TEAMWORK_PROJECT_ID}}
+          TEAMWORK_PROJECT_ID: '485369'
           TEAMWORK_OPENED_COLUMN: 'Ready for Peer Review'
           TEAMWORK_CLOSED_COLUMN: 'In Progress'
           TEAMWORK_MERGED_COLUMN: 'Ready to Test (In Staging)'
-      # Use the output from the `hello` step
+      # Use the output from the previous step
       - name: Get the output taskid
         run: echo "The taskid is ${{ steps.twsync.outputs.taskid }}"
